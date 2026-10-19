@@ -20,3 +20,29 @@ router.get('/', (req, res)=>{
         datos: autosDeportivos
     });
 });
+
+router.get('/:id', (req, res) =>{
+    const idBuscado = parseInt(req.params.id, 10);
+
+    if(isNaN(idBuscado)){
+        return res.status(400).json({
+            exito: false,
+            error: "El parametro ID debe ser un número entero válido."
+        });
+    }
+
+    const autoEncontrado = autosDeportivos.find((a) => a.id === idBuscado);
+
+    if(!autoEncontrado){
+        return res.status(404).json({
+            exito: false,
+            error: `No se encontró ningún autoDeportivo con el ID ${idBuscado}`
+        });
+    }
+
+    res.status(200).json({
+        exito: true,
+        mensaje: "Auto deportivo encontrado exitosamente.",
+        autosDeportivos: autoEncontrado
+    });
+});
