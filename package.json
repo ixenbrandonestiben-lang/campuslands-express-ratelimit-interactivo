@@ -1,0 +1,26 @@
+{
+  "name": "campuslands-express-ratelimit-interactivo",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": " node --watch src/app.js",
+    "test": "NODE_ENV=test node test/test-api.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ixenbrandonestiben-lang/campuslands-express-ratelimit-interactivo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ixenbrandonestiben-lang/campuslands-express-ratelimit-interactivo/issues"
+  },
+  "homepage": "https://github.com/ixenbrandonestiben-lang/campuslands-express-ratelimit-interactivo#readme",
+  "dependencies": {
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.1"
+  }
+}
