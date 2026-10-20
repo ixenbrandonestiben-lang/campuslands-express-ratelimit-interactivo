@@ -136,3 +136,5 @@ router.delete('/:id', (req, res) =>{
         autosDeportivos: autoEliminado
     });
 });
+
+export default router;
