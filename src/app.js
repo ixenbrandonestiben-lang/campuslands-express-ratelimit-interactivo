@@ -25,7 +25,20 @@ app.get('/', (req, res) =>{
     });
 });
 
+app.use('/api/', apiLimiter);
+
+app.use('/api/autosdeportivos', autosDeportivosRouter);
+
+app.use((req, res) =>{
+    res.status(404).json({
+        exito: false,
+        error: `La ruta '${req.method} ${req.originalUrl}' no existe en el servidor de autosDeportivos.`
+    });
+});
+
+
 app.use(errroHandler);
+
 
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
