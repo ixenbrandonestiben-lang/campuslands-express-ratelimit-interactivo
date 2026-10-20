@@ -2,7 +2,7 @@ import express from "express";
 import { logger } from "./middlewares/logger.js";
 import { apiLimiter } from "./middlewares/rateLimiter.js";
 import { errroHandler } from "./middlewares/errorHandler.js";
-import { autosDeportivosRouter } from "./routes/autosDeportivos.routes.js";
+import router from "./routes/autosDeportivos.routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -27,7 +27,7 @@ app.get('/', (req, res) =>{
 
 app.use('/api/', apiLimiter);
 
-app.use('/api/autosdeportivos', autosDeportivosRouter);
+app.use('/api/autosdeportivos', router);
 
 app.use((req, res) =>{
     res.status(404).json({

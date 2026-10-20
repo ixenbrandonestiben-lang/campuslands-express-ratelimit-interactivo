@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { autosDeportivos } from "../data/autosDeportivos";
-import { validarAtuos } from "../middlewares/validator";
-import { crearAutoLimiter } from "../middlewares/rateLimiter";
-import rateLimit from "express-rate-limit";
+import { autosDeportivos } from "../data/autosDeportivos.js";
+import { validarAtuos } from "../middlewares/validator.js";
+import { crearAutoLimiter } from "../middlewares/rateLimiter.js";
+
 
 const router = Router();
 
@@ -58,7 +58,7 @@ router.post('/', crearAutoLimiter, validarAtuos, (req, res) =>{
             id: nuevoId,
             modelo: modelo.trim(),
             marca: marca.trim(),
-            potenciaHP: potenciaHP.trim(),
+            potenciaHP: Number(potenciaHP),
             precio: Number(precio)
         };
 
@@ -109,7 +109,7 @@ router.put('/:id', validarAtuos, (req, res)=>{
 
 
 router.delete('/:id', (req, res) =>{
-    const idBuscado = parseInt(req.paraq.id, 10);
+    const idBuscado = parseInt(req.params.id, 10);
 
     if(isNaN(idBuscado)){
         return res.status(400).json({
@@ -124,7 +124,7 @@ router.delete('/:id', (req, res) =>{
     if(indice === -1 ){
         return res.status(400).json({
             exito: false,
-            error: `No se puede eliminar: No existe Videojuego con ID ${idBuscado}`
+            error: `No se puede eliminar: No existe un Auto deportivo con ID ${idBuscado}`
         });
     }
 

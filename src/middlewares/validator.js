@@ -22,7 +22,9 @@ export function validarAtuos(req, res, next){
         });
     }
 
-    if(!potenciaHP || typeof potenciaHP !== "string" || potenciaHP.trim().length){
+    const PotenciaHP = Number(potenciaHP);
+
+    if(potenciaHP === undefined || potenciaHP === null || isNaN(PotenciaHP) || PotenciaHP < 100 ){
         return res.status(400).json({
             exito: false,
             error: "El campo 'potenciaHP' es obligatorio (ej. 360, 220, 400)"
@@ -30,6 +32,7 @@ export function validarAtuos(req, res, next){
     }
 
     const precioNum = Number(precio);
+
     if(precio === undefined || precio === null || isNaN(precioNum) || precioNum < 0){
         return res.status(400).json({
             exito: false,
