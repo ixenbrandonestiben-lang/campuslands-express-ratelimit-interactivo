@@ -17,10 +17,10 @@ app.get('/', (req, res) =>{
         almacenamiento: "Arreglo de autos deportivos en memoria RAM (sin base de datos externa)",
         endpoint: {
             listar_autos: "Get /api/autosdeportivos",
-            buscar_por_id: "Get /api/videojuegos/:id",
-            crear_juego: "POST /api/videojuegos",
-            actualizar_juego: "PUT /api/videojuegos/:id",
-            eliminar_juego: "DELETE /api/videojuegos/:id"
+            buscar_por_id: "Get /api/autosdeportivos/:id",
+            crear_juego: "POST /api/autosdeportivos",
+            actualizar_juego: "PUT /api/autosdeportivos/:id",
+            eliminar_juego: "DELETE /api/autosdeportivos/:id"
         }
     });
 });
